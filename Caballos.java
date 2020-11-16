@@ -1,16 +1,16 @@
 import java.util.Arrays;
 
 public class Caballos {
-    
+
     private int NUM_CABALLOS;
     private int[] solution;
 
-    public Caballos (int NUM_CABALLOS) {
+    public Caballos(int NUM_CABALLOS) {
         this.NUM_CABALLOS = NUM_CABALLOS;
         this.solution = new int[NUM_CABALLOS];
-        //init();
-        //String strArray = Arrays.toString(solution);
-        //System.out.println(strArray);
+        // init();
+        // String strArray = Arrays.toString(solution);
+        // System.out.println(strArray);
     }
 
     public void init() {
@@ -33,15 +33,15 @@ public class Caballos {
                 // es para determinar las soluciones parciales
                 boolean valid = isValid(solution, caballo);
                 String strSol = Arrays.toString(solution);
-                System.out.println(strSol + " " /*+ (valid ? "sol parcial" : "")*/
+                System.out.println(strSol + " " /* + (valid ? "sol parcial" : "") */
                         + (valid && (caballo == NUM_CABALLOS - 1) ? "solucion" : ""));
                 if (valid) {
-                    
+
                     success = backtracking(solucion, caballo + 1);
                 }
             } while (solution[caballo] < (NUM_CABALLOS - 1) && (!success));
             solucion[caballo] = -1;
-        } //else {}
+        } // else {}
         return success;
     }
 
@@ -50,7 +50,10 @@ public class Caballos {
     public boolean isValid(int[] solution, int caballo) {
         boolean ok = true;
         for (int i = 0; i < caballo; i++) {
-            if (!(solution[i] == solution[caballo] || Math.abs(solution[i] - solution[caballo]) == Math.abs(i - caballo))) {
+
+            if (!(solution[i] == solution[caballo]
+                    || Math.abs(solution[i] - solution[caballo]) == Math.abs(i - caballo))
+                    && (Math.abs(i - caballo) <= 2)) {
                 ok = false;
                 break;
             }
@@ -59,7 +62,7 @@ public class Caballos {
     }
 
     public static void main(String[] args) {
-        Caballos caballo = new Caballos(3);
+        Caballos caballo = new Caballos(7);
         caballo.searchSolution();
     }
 
