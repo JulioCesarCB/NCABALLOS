@@ -1,16 +1,83 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.util.Arrays;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+//import javax.swing.JGridLayout;
+import javax.swing.JTextField;
 
-public class Reinas {
 
+
+public class Reinas extends JFrame {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private int NUM_REINAS;
     private int[] solution;
-
+    private final static  int SIZE = 600;
     public Reinas(int NUM_REINAS) {
         this.NUM_REINAS = NUM_REINAS;
         this.solution = new int[NUM_REINAS];
         //init();
         //String strArray = Arrays.toString(solution);
         //System.out.println(strArray);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(SIZE,SIZE);
+        
+        BorderLayout gestorLayout = new BorderLayout();
+        //GridLayout gestor = new GridLayout(3,3);
+        //setLayout(gestor);
+        setLayout(gestorLayout);
+
+        JButton btn1 = new JButton("B1");
+        JButton btn2 = new JButton("B1");
+        JButton btn3 = new JButton("B1");
+        JButton btn4 = new JButton("B1");
+        //JTextField
+
+        add(BorderLayout.NORTH,btn1);
+        add(BorderLayout.SOUTH,btn2);
+        //add(BorderLayout.CENTER,getBoard());
+        add(BorderLayout.EAST,btn3);
+        add(BorderLayout.WEST,btn4);
+
+        add(btn1);
+        add(btn2);
+        add(btn3);
+        add(btn4);
+
+        setLocationRelativeTo(this);
+        setVisible(true);
+        
+        
+        
+    }
+
+    /*public JPanel getBoard(){
+        JPanel panel = new JPanel();
+        GridLayout gestor = new GridLayout (NUM_REINAS,NUM_REINAS);
+        panel. setLayout(gestor);
+        for (int i = 0; i < NUM_REINAS; i++) {
+            for (int j = 0; j < NUM_REINAS; j++) {
+                JButton cell = new JButton ("x")
+                if(i%2 == 0){
+                    cell.setBackground(Color.GRAY)
+                }
+                cell.setEnabled(false);
+                panel.add(cell);
+                
+            }
+        }
+    }*/
+
+    public void getOptions(){
+
+    }
+
+    public void getResult(){
+
     }
 
     public void init() {
@@ -59,7 +126,7 @@ public class Reinas {
     }
 
     public static void main(String[] args) {
-        Reinas reina = new Reinas(4);
+        Reinas reina = new Reinas(3);
         reina.searchSolution();
     }
 
